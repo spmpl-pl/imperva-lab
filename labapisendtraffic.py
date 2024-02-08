@@ -1,4 +1,14 @@
 #!/usr/bin/env python
+######################################################
+## CREATED BY BARTOSZ CHMIELEWSKI                   ##
+## bartosz.chmielewski@external.thalesgroup.com     ##
+######################################################
+#
+# The script send requests to API endpoints on api.lab.spm.pl host.  
+# 
+#
+
+
 import requests 
 import random
 import string

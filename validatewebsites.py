@@ -3,6 +3,10 @@
 ## CREATED BY BARTOSZ CHMIELEWSKI                   ##
 ## bartosz.chmielewski@imperva.com                  ##
 ######################################################
+#
+# This script validates websites listed in the file (provided as argument). The file must contain a site FQDN
+# in every line (and nothing else). 
+#
 
 import argparse
 import os

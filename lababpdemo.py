@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 ######################################################
 ## CREATED BY BARTOSZ CHMIELEWSKI                   ##
-## bartosz.chmielewski@imperva.com                  ##
+## bartosz.chmielewski@external.thalesgroup.com     ##
 ######################################################
+#
+# The script uses selenium framework to emulate advanced bot behavior. 
+# 
+#
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions

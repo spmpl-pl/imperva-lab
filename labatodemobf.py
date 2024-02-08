@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+######################################################
+## CREATED BY BARTOSZ CHMIELEWSKI                   ##
+## bartosz.chmielewski@external.thalesgroup.com     ##
+######################################################
+#
+# The script emulate BruteForce attack on login endpoint deployed on lab.spm.pl. 
+# 
+#
 import requests 
 import random
 import string
