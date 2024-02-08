@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-sudo tail -f -n 0 /var/lib/docker/volumes/sa-demo-423_rasp-logs/_data/acme-java/event.log /var/lib/docker/volumes/sa-demo-423_rasp-logs/_data/acme-dotnetcore/event.log /var/lib/docker/volumes/sa-demo-423_rasp-logs/_data/struts2showcase/event.log
