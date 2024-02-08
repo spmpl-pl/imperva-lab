@@ -54,6 +54,12 @@ if( os.path.exists(inputfilename) ):
         inputlines = f.read().splitlines() 
 
     print('URL,Status Code,Status Description,Is Status Code OK?,Onboarded To Imperva?,Error Message')
+    
+    if os.path.exists(outputfile):
+        os.remove(outputfile)
+    
+    f = open(outputfile, 'a')
+    
     for line in inputlines:
         if( len(line) == 0): quit()
         
@@ -86,4 +92,32 @@ if( os.path.exists(inputfilename) ):
         outputline = url + s + response_status_code + s + response_reason + s + str(response_status_code_ok) + s + response_ip + s + str(response_onboarded_to_imperva) + s + str(response_error)
         
         print( outputline )
+
+        f.write( outputline + '\n' )
+    
+    f.close()    
+    
+    f = open(outputfile, 'r')
+    
+    list_not_onboarded = []
+    list_connection_error = []
+    list_error_codes = []
+    
+    for line in f:
+        fields = line.split(',')
+        if fields[5] == 'False':
+            list_not_onboarded.append(fields[0])
+        if fields[1] == '000':
+            list_connection_error.append(fields[0])
+        if fields[2] != 'OK':
+            list_error_codes.append(fields[0])
+    
+    print("\nWebsites not onboarded to Imperva:")
+    print(*list_not_onboarded, sep='\n')
+    print("\nWebsites with connection errors:")
+    print(*list_connection_error, sep='\n')
+    print("\nWebsites that responds with http error codes (4xx, 5xx):")
+    print(*list_error_codes, sep='\n')
+    
+    f.close()
     
