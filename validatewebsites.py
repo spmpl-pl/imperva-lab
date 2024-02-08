@@ -110,7 +110,7 @@ if( os.path.exists(inputfilename) ):
         if fields[1] == '000':
             list_connection_error.append(fields[0])
         if fields[2] != 'OK':
-            list_error_codes.append(fields[0])
+            list_error_codes.append(fields[0] + ' (code: ' + fields[1] + ', reason: ' + fields[2] + ')')
     
     print("\nWebsites not onboarded to Imperva:")
     print(*list_not_onboarded, sep='\n')
