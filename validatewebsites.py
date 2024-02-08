@@ -42,9 +42,11 @@ def check_imperva_ip(ipaddress):
 
 parser = argparse.ArgumentParser(description="BCHNotes")
 parser.add_argument('inputfile', help="Input File")
+parser.add_argument('outputfile',  help="Output File")
 args = parser.parse_args()
 
 inputfilename = args.inputfile
+outputfile = args.outputfile
 
 if( os.path.exists(inputfilename) ):
 
@@ -81,6 +83,7 @@ if( os.path.exists(inputfilename) ):
             response_onboarded_to_imperva = check_imperva_ip(response_ip)
             
         s = ','
-        print( url + s + response_status_code + s + response_reason + s + str(response_status_code_ok)
-        + s + response_ip + s + str(response_onboarded_to_imperva) + s + str(response_error) )
+        outputline = url + s + response_status_code + s + response_reason + s + str(response_status_code_ok) + s + response_ip + s + str(response_onboarded_to_imperva) + s + str(response_error)
+        
+        print( outputline )
     
