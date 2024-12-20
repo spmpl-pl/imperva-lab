@@ -112,11 +112,11 @@ if( os.path.exists(inputfilename) ):
         if fields[2] != 'OK':
             list_error_codes.append(fields[0] + ' (code: ' + fields[1] + ', reason: ' + fields[2] + ')')
     
-    print("\nWebsites not onboarded to Imperva:")
+    print("\n==Websites not onboarded to Imperva:")
     print(*list_not_onboarded, sep='\n')
-    print("\nWebsites with connection errors:")
+    print("\n==Websites with connection errors:")
     print(*list_connection_error, sep='\n')
-    print("\nWebsites that responds with http error codes (4xx, 5xx):")
+    print("\n==Websites that respond with HTTP error codes (4xx, 5xx):")
     print(*list_error_codes, sep='\n')
     
     f.close()

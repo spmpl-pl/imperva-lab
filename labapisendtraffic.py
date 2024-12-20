@@ -28,7 +28,7 @@ headers3 = {'bchtags': 'BYPASS-ABP', 'Content-Type': 'application/x-www-form-url
 counter = int(1)
 
 
-baseurl = "http://api.lab.spm.pl/api/"
+baseurl = "http://lab.spm.pl/api/"
 
 def send_request(path, headers, data=""):
     fullpath = "" + baseurl + path

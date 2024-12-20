@@ -43,7 +43,7 @@ def sendspam(delay, text):
 
 
 while True:
-    data = input("Select option:\n\n 1) DIRECT \n 2) Protected by ABP\n\n")
+    data = input("Which website you would like to evaluate:\n\n 1) Direct Access (no ABP) \n 2) Protected by ABP\n\n")
     if data == '1':
         url = 'http://direct-lab.spm.pl/'
         break
@@ -53,18 +53,18 @@ while True:
         
         
 while True:
-    data = input("Select the browser mode: \n\n 1) FIREFOX\n 2) CHROME\n 3) FIREFOX HEADLESS\n 4) CHROME HEADLESS\n\n")
+    data = input("Select the browser mode: \n\n 1) Firefox\n 2) Firefox (headless)\n 3) Chrome\n 4) Chrome (headless)\n\n")
     if data == '1':
         print("\nLunching a FIREFOX browser...")
         options = FirefoxOptions()
         browser = webdriver.Firefox(options=options)
         break
-    elif data == '2':
+    elif data == '3':
         print("\nLunching a CHROME browser...")
         options = ChromeOptions()
         browser = webdriver.Chrome(options=options)
         break
-    elif data == '3':
+    elif data == '2':
         print("\nLunching a FIREFOX HEADLESS browser...")
         options = FirefoxOptions()
         options.add_argument("--headless")
@@ -78,7 +78,7 @@ while True:
         break
 
 while True:
-    data = input("Select tests: \n\n 0) ALL TESTS\n 1) SCRAPING\n 2) SPAMMING\n 3) CREDENTIAL CRACKING\n\n")
+    data = input("Select tests: \n\n 0) All Tests\n 1) Web Scraping\n 2) Web Spamming\n 3) Credential Cracking\n\n")
     if data == '0' or data == '1' or data == '2' or data == '3':
         break
 
