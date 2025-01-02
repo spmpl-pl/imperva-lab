@@ -4,7 +4,7 @@
 ## bartosz.chmielewski@external.thalesgroup.com     ##
 ######################################################
 #
-# The script send requests to API endpoints on api.lab.spm.pl host.  
+# The script send requests to API endpoints on lab.spm.pl host.  
 # 
 #
 
@@ -74,11 +74,10 @@ def send_login(password):
             print("  => Login Failed...")
         else:
             print("  => Result unknown...")
-            #print(response)
     print("\n========\n")
     time.sleep(interval)
 
-time_end  = time.time() + 60 * 59 
+time_end  = time.time() + 60 * 58 
 
 
 while time.time() < time_end:
@@ -87,11 +86,11 @@ while time.time() < time_end:
     int_midnight = datetime.datetime.combine(int_now.date(), datetime.time())
     int_seconds = (int_now - int_midnight).seconds
     
-    interval = float(2.5) + 2 * (math.cos(((int_seconds / 86400) * 2) * math.pi))
-    # between 0.5 and 4.5
+    interval = float(8.5) + 2 * (math.cos(((int_seconds / 86400) * 2) * math.pi))
+
     # interval = 0.1
     print("========================================================================")
-    print("====== Repetition: " + str(counter) + ". Time left: " + str(int(time_end - time.time()))  + "Interval: " + str(interval))
+    print("====== Repetition: " + str(counter) + ". Time left: " + str(int(time_end - time.time()))  + " Interval: " + str(interval))
     print("========================================================================")
 
     print("")
@@ -106,9 +105,9 @@ while time.time() < time_end:
 
     send_request("GetSum", headers2, data)
 
-    send_request("GetSum-Shadow", headers2, data)
+    # send_request("GetSum-Shadow", headers2, data)
 
-    send_request("GetSum-NoAuth", headers2_na, data)
+    # send_request("GetSum-NoAuth", headers2_na, data)
 
     a1 = str(random.randint(1,10))
     a2 = str(random.randint(1,6))
