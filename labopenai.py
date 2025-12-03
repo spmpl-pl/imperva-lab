@@ -9,6 +9,7 @@
 import os
 from openai import OpenAI
 
+
 while True:
     data = input("Do you want to talk Directly (1) or via Imperva AI Firewall (2)? ")
     if data == '1':
@@ -34,7 +35,7 @@ if direct:
 
 
 else:
-    client = OpenAI(base_url="https://ai-firewall.aifw-gw.service.imperva.com",
+    client = OpenAI(base_url="https://ai-firewall.aifw-gw.service.imperva.com", 
                     default_headers={"x-imperva-api-key": os.getenv("AIFIREWALL_API_KEY"),
                                     "x-target-url": os.getenv("ORIGINAL_LLM_PROVIDER_URL")})
     
@@ -47,6 +48,8 @@ else:
         )
         print("\n========= The Response: =============\n", response.choices[0].message.content)
         print("===================================== ")
+
+
 
 
 
