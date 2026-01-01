@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 ######################################################
 ## CREATED BY BARTOSZ CHMIELEWSKI                   ##
-## bartosz.chmielewski@external.thalesgroup.com     ##
+## bartosz.chmielewski@thalesgroup.com              ##
 ######################################################
 #
 # The script uses selenium framework to emulate advanced bot behavior. 

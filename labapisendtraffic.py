@@ -26,7 +26,7 @@ headers_get = {'Accept': 'application/json', 'auth': 'Bartosz123:)'}
 headers_post = {'Accept': 'application/json', 'auth': 'Bartosz123:)', 'Content-Type': 'application/json'}
 counter = int(1)
 
-baseurl = "http://lab2.spm.pl/api/"
+baseurl = "http://lab.spm.pl/api/"
 
 def send_request(path, headers, data="", stateless=False, ):
     fullpath = "" + baseurl + path

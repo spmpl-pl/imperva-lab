@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 ######################################################
 ## CREATED BY BARTOSZ CHMIELEWSKI                   ##
-## bartosz.chmielewski@external.thalesgroup.com     ##
+## bartosz.chmielewski@thalesgroup.com              ##
 ######################################################
 #
 # The script send requests to API endpoints on lab.spm.pl host.  
