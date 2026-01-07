@@ -22,8 +22,8 @@ from urllib3.exceptions import InsecureRequestWarning
 
 session1 = requests.session()
 interval = 1
-headers_get = {'Accept': 'application/json', 'auth': 'Bartosz123:)'}
-headers_post = {'Accept': 'application/json', 'auth': 'Bartosz123:)', 'Content-Type': 'application/json'}
+headers_get = {'Content-Type': 'application/json'}
+headers_post = {'Accept': 'application/json', 'Content-Type': 'application/json'}
 counter = int(1)
 
 baseurl = "http://lab.spm.pl/api/"
