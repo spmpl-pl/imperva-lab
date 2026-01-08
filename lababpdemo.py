@@ -121,7 +121,8 @@ time.sleep(1)
 browser.get(url + "accountinfo")
 
 time.sleep(1)
-
+browser.find_element("id", "RefreshData").click()
+time.sleep(1)
 ccnumber = browser.find_element('id', 'accountinfo_cc_number')
 print("The Credit Card number is:", ccnumber.text)
 time.sleep(1)
@@ -159,7 +160,7 @@ input("\nHit Enter when you are ready to move on!")
 
 
 #######################################
-##### SPAMMING USE-CASE
+##### SCRAPING USE-CASE
 #######################################
 print("\n\n===SCRAPING USE CASE===")
 print("Lets see what are the prices today...\n")
@@ -176,7 +177,7 @@ time.sleep(1)
 
 browser.find_element("id", "getPriceBtn-1-2").click()
 ItemLenovo = browser.find_element('id', 'pricefield-1-2')
-print("Samsung Galaxy S26 (black) price:", ItemLenovo.text)
+print("Laptop Lenovo T14 Gen4 price:", ItemLenovo.text)
 
 time.sleep(2)
 print("\nDone! Now I can update my prices to be a little lower then the competition :)")
