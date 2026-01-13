@@ -134,6 +134,7 @@ while time.time() < time_end:
     data = json.dumps({ "username": "bartoszch", "password": password_to_send })
     send_request("login", headers_post, data, True)
 
+    send_request("logout", headers_get)
 
     print("\n\n")
     counter = counter + 1
