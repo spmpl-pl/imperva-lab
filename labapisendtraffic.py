@@ -18,6 +18,7 @@ import re
 import math
 import json
 from urllib3.exceptions import InsecureRequestWarning
+import os
 
 
 session1 = requests.session()
@@ -66,14 +67,13 @@ time_end  = time.time() + 60 * 58
 ### START 
 ##################################
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, "Credentials.json")
 
-
+with open(file_path) as f:
+    data = json.load(f)
 
 while time.time() < time_end:
-
-
-
-
     
     int_now = datetime.datetime.now()
     int_midnight = datetime.datetime.combine(int_now.date(), datetime.time())
@@ -88,8 +88,7 @@ while time.time() < time_end:
 
     print("")
 
-    with open("Credentials.json") as f:
-        data = json.load(f)
+
 
     usertofetch = str(random.randint(1, 200))
 
