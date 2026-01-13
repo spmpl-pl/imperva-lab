@@ -71,7 +71,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(script_dir, "Credentials.json")
 
 with open(file_path) as f:
-    data = json.load(f)
+    credential_data = json.load(f)
 
 while time.time() < time_end:
     
@@ -89,12 +89,11 @@ while time.time() < time_end:
     print("")
 
 
-
     usertofetch = str(random.randint(1, 200))
 
     data = {
-        "username": data[usertofetch]["username"],
-        "password": data[usertofetch]["password"]
+        "username": credential_data[usertofetch]["username"],
+        "password": credential_data[usertofetch]["password"]
     }
     data = json.dumps(data)
 
