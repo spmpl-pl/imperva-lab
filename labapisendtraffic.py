@@ -66,11 +66,14 @@ time_end  = time.time() + 60 * 58
 ### START 
 ##################################
 
-data = '{"username": "bartoszch", "password": "Test123123#"}'
-send_request("login", headers_post, data)
+
 
 
 while time.time() < time_end:
+
+
+
+
     
     int_now = datetime.datetime.now()
     int_midnight = datetime.datetime.combine(int_now.date(), datetime.time())
@@ -84,6 +87,20 @@ while time.time() < time_end:
     print("========================================================================")
 
     print("")
+
+    with open("Credentials.json") as f:
+        data = json.load(f)
+
+    usertofetch = str(random.randint(1, 200))
+
+    data = {
+        "username": data[usertofetch]["username"],
+        "password": data[usertofetch]["password"]
+    }
+    data = json.dumps(data)
+
+    print("  => FETCHING USERID:", usertofetch)
+    send_request("login", headers_post, data)
 
     send_request("GetSession", headers_get)
 
@@ -103,7 +120,7 @@ while time.time() < time_end:
     send_request("GetProduct", headers_post, data)
 
 
-    a1 = str(random.randint(1,200))
+    a1 = usertofetch
     data = "{\"id\":\"" + a1 + "\"}"
     send_request("GetUserData", headers_post, data)
 
