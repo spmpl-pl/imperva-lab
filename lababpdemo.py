@@ -12,6 +12,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 import time
+from selenium.webdriver.support.ui import Select
 
 
 ccounter = 0
@@ -167,17 +168,23 @@ print("Lets see what are the prices today...\n")
 
 browser.get(url + "webshop")
 
+time.sleep(1)
+
+select_element = browser.find_element("id", "categorySelect")
+dropdown = Select(select_element)
+dropdown.select_by_visible_text("Electronics")
+
 time.sleep(2)
 
-browser.find_element("id", "getPriceBtn-1-1").click()
-ItemSamsung = browser.find_element('id', 'pricefield-1-1')
-print("Samsung Galaxy S26 (black) price:", ItemSamsung.text)
+browser.find_element("id", "getPriceBtn-1").click()
+ItemSamsung = browser.find_element('id', 'pricefield-1')
+print("Samsung Galaxy S25 price.", ItemSamsung.text)
 
 time.sleep(1)
 
-browser.find_element("id", "getPriceBtn-1-2").click()
-ItemLenovo = browser.find_element('id', 'pricefield-1-2')
-print("Laptop Lenovo T14 Gen4 price:", ItemLenovo.text)
+browser.find_element("id", "getPriceBtn-2").click()
+ItemLenovo = browser.find_element('id', 'pricefield-2')
+print("Apple iPhone 15 .", ItemLenovo.text)
 
 time.sleep(2)
 print("\nDone! Now I can update my prices to be a little lower then the competition :)")
