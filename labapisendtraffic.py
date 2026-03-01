@@ -109,14 +109,16 @@ while time.time() < time_end:
     send_request("GetSum", headers_post, data)
 
 
-    send_request("GetProductOverview", headers_get)
 
+    a1 = str(random.randint(1,200))
+    data = "{\"pID\": \"" + a1 + "\"}"
+    send_request("GetProductByID", headers_post, data)
 
     a1 = str(random.randint(1,10))
-    a2 = str(random.randint(1,6))
-    data = "{\"category\":\"" + a1 + "\", \"id\":\"" + a2 + "\"}"
-    send_request("GetProduct", headers_post, data)
+    data = "{\"pCAT\": \"" + a1 + "\"}"
+    send_request("GetProductsByCategory", headers_post, data)
 
+    send_request("GetCategories", headers_get)
 
     a1 = usertofetch
     data = "{\"id\":\"" + a1 + "\"}"
@@ -124,6 +126,27 @@ while time.time() < time_end:
 
 
     send_request("GuestBook", headers_get)
+
+    a1 = str(random.randint(1,200))
+    a2 = str(1)
+    data = "{\"pID\":\"" + a1 + "\", \"pQTY\": " + a2 + " }"
+    send_request("AddToCart", headers_post, data)
+    
+    a1 = str(random.randint(1,200))
+    a2 = str(1)
+    data = "{\"pID\":\"" + a1 + "\", \"pQTY\": " + a2 + " }"
+    send_request("AddToCart", headers_post, data)
+
+    send_request("GetCart", headers_get)
+    
+    send_request("GetCartInfo", headers_get)
+    
+    a1 = str(random.randint(1,9))
+    a1 = "12345" + a1
+    data = "{\"cCODE\":\"" + a1 + "\"}"
+    send_request("AddCoupon", headers_post, data)
+
+    send_request("GetCoupons", headers_get)
 
 
     a1 = random.randint(1,20)
