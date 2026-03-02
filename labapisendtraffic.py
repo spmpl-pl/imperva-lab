@@ -143,7 +143,8 @@ while time.time() < time_end:
     
     a1 = str(random.randint(1,9))
     a1 = "12345" + a1
-    data = "{\"cCODE\":\"" + a1 + "\"}"
+    a2 = ''.join(random.choices('0123456789', k=3))
+    data = "{\"cPARTNER\":\"" + a2 + "\", \"cCODE\":\"" + a1 + "\"}"
     send_request("AddCoupon", headers_post, data)
 
     send_request("GetCoupons", headers_get)
