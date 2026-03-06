@@ -23,7 +23,8 @@ ccounter = 0
 def cclogin(login, password, delay=False):
     global ccounter
     ccounter = ccounter + 1
-    print('Attempt: ', ccounter, '. Trying username: ', login, ' and password: ', password, '.', sep = '')
+    print(f"Attempt: {ccounter:2}     Username: {login:16} Password: {password:20}")
+
     loginform = browser.find_element('id', 'username')
     passwordform = browser.find_element('id', 'password')
     if delay: time.sleep(1)
@@ -37,25 +38,26 @@ def cclogin(login, password, delay=False):
     if delay: time.sleep(1)
 
 def sendspam(delay, text):
-    wait = WebDriverWait(browser, 10)
+    try:
+        wait = WebDriverWait(browser, 10)
+        inputform = wait.until(EC.presence_of_element_located((By.ID, "message")))
 
-    inputform = wait.until(EC.presence_of_element_located((By.ID, "message")))
+        if delay == 1: time.sleep(2)
 
-    if delay == 1:
-        time.sleep(2)
+        inputform.clear()
+        inputform.send_keys(text)
 
-    print("Sending:", text)
+        time.sleep(0.05)
+        # Use a more robust check: just ensure SOME text arrived
+        wait.until(lambda d: len(inputform.get_attribute("value")) > 0)
 
-    inputform.clear()
-    inputform.send_keys(text)
+        browser.find_element(By.ID, "submitEntry").click()
+        print(f"Successfully sent: {text}...")
 
-    # wait until the text is actually in the field
-    wait.until(lambda d: inputform.get_attribute("value") == text)
+    except Exception as e:
+        print(f" ---- Failed to send: {text[:20]}... Error: {type(e).__name__}")
 
-    browser.find_element(By.ID, "submitEntry").click()
-
-    if delay == 1:
-        time.sleep(2)
+    if delay == 1: time.sleep(2)
 
 
 def attack_credentialstuffing():
@@ -137,23 +139,35 @@ def attack_scraping():
     dropdown = Select(select_element)
     options = dropdown.options
 
+    wait = WebDriverWait(browser, 10)
+
     for option in options[1:4]:
+
         print(f"Product category selected: {option.text}\n")
-        time.sleep(1)
+
         dropdown.select_by_visible_text(option.text)
-        
+
+        # wait until buttons appear for the new category
+        wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "button.getPriceBtn")))
+
         buttons = browser.find_elements(By.CSS_SELECTOR, "button.getPriceBtn")
 
         for button in buttons:
-            button_id = button.get_attribute("id")   # e.g. getPriceBtn-21
-            num = button_id.split("-")[1]             # 21
+            button_id = button.get_attribute("id")
+            num = button_id.split("-")[1]
 
             button.click()
             time.sleep(0.1)
-            
+            wait.until(EC.presence_of_element_located((By.ID, f"pricefield-{num}")))
+
             price = browser.find_element(By.ID, f"pricefield-{num}").text
+            try:
+                price_final = price.split("€ ")[1]
+            except (IndexError, AttributeError):
+                price_final = "N/A"
+                
             description = browser.find_element(By.ID, f"producttitle-{num}").text
-            print(f"Product ID: {num};  Price: {price}; Title: {description}")
+            print(f"Product ID: {num:2}    Price: {price_final:>10}    Product Name: {description}")
             
         print("\n\n")
         time.sleep(1)
@@ -161,10 +175,9 @@ def attack_scraping():
 
     time.sleep(1)
 
-
+    print("Done! Now I can update my prices to be a little lower then the competition :)")
+    print("")
     time.sleep(2)
-    print("\nDone! Now I can update my prices to be a little lower then the competition :)")
-
 
 
 while True:
