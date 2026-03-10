@@ -47,9 +47,9 @@ def sendspam(delay, text):
         inputform.clear()
         inputform.send_keys(text)
 
-        time.sleep(0.05)
+        time.sleep(0.1)
         # Use a more robust check: just ensure SOME text arrived
-        wait.until(lambda d: len(inputform.get_attribute("value")) > 0)
+        #wait.until(lambda d: len(inputform.get_attribute("value")) > 0)
 
         browser.find_element(By.ID, "submitEntry").click()
         print(f"Successfully sent: {text}...")
@@ -109,19 +109,21 @@ def attack_guestbook_spamming():
 
     browser.get(url + "guestbook")
 
-    sendspam(1, 'This is a spam example [dfghgdfasgtndsdvxvzasdfasfdxz]')
-    sendspam(1, 'This is another spam example [sgfashgfkshdfjhsfksahskh]')
-    sendspam(0, 'SPAM: askjhfaskhfxzbewhrkhsgsahwgheagfdasafasgfas')
-    sendspam(0, 'SPAM: askhgsghfjsdgfergtyuhfergfvdshagfjsgfzjcgsj')
-    sendspam(0, 'SPAM: tiundkgbskbfhjsabfjsdbsafjkbvdfjvfjvjvsadjv')
-    sendspam(0, 'SPAM: rtgbishfisgfagsfkgfjsgdhjgfsjgfajegfjsfsauf')
-    sendspam(0, 'SPAM: sghhgdhjsgfjshabgfhjbgjhgwajhfgajsfjshjzgfj')
-    sendspam(0, 'SPAM: tguyhgbhdjshgsjfghjsgjhdfzjsghfjsgjshgfsjhg')
-    sendspam(0, 'SPAM: asgfdsffdkghdskjndfkjghkhkuhzgfkuasukfhkusz')
-    sendspam(0, 'SPAM: yhilregnjdlhgkushfgskuhkudhfkaushfkaushfkus')
-    sendspam(0, 'SPAM: cnycksufhkashkasdbfyjgtkshurtishgkaushfkaus')
-    sendspam(0, 'SPAM: kjkgjdkugfakhfskfbyshkdusghfkahsgkaushfskdf')
-
+    sendspam(1, 'I hate this webshop. The customer service is lazy and rude!')
+    sendspam(1, 'Hey! Waiting for your package takes so long that you forget what you ordered!')
+    sendspam(0, 'You\'d be better off going to the competition. Here, you\'ll waste your time and money.')
+    sendspam(0, 'No kidding. The store looks good, but don\'t count on the merchandise.')
+    sendspam(0, 'Scammers! They took the money and now no one is answering the phone.')
+    sendspam(0, 'The goods arrived damaged. The complaint was rejected! I do not recommend them.')
+    sendspam(0, 'Five stars for creativity. I ordered a phone case and received something that might be a spoon.')
+    sendspam(0, 'Their delivery speed is impressive if you measure time in geological eras.')
+    sendspam(0, 'Support told me to restart my router. I ordered shoes.')
+    sendspam(0, 'Amazing shop! You order today and maybe your grandchildren will receive it.')
+    sendspam(0, 'They said the item was in stock. I guess the stock is located on Mars.')
+    sendspam(0, 'Customer support is always available. Available to ignore you.')
+    sendspam(0, 'They responded to my complaint with silence. Very minimalist communication style.')
+    sendspam(0, 'Fantastic store if your hobby is waiting and writing angry emails.')
+    
     time.sleep(1)
 
     print("Done! I've sent some spam. I feel good now!")
