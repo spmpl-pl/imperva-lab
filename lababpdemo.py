@@ -183,15 +183,19 @@ def attack_scraping():
 
 
 while True:
-    data = input("Which website you would like to evaluate:\n\n 1) Direct Access (no ABP) \n 2) Protected by ABP\n\n")
+    data = input("Which website you would like to evaluate:\n\n 1) Unprotected\n 2) Protected\n 3) Custom\n\n")
     if data == '1':
         url = 'http://direct-lab.spm.pl/'
         break
     elif data == '2':
         url = 'http://lab.spm.pl/'
         break
+    elif data == '3':
+        url = input("Provide full URL (http://FQDN[:PORT]/): ")
+        break
         
-        
+
+
 while True:
     data = input("Select the browser mode: \n\n 1) Firefox\n 2) Firefox (headless)\n 3) Chrome\n 4) Chrome (headless)\n\n")
     if data == '1':
